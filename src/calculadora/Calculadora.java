@@ -7,16 +7,18 @@ public class Calculadora {
         this.numero2 = num2;
     }
 
-    public int realizarOperacion(String operacion) {
+    public Double realizarOperacion(String operacion) {
         if (operacion.equals("suma")) {
-            return suma();
+            return (double) this.suma();
         } else if (operacion.equals("resta")) {
-            return resta();
+            return (double) this.resta();
         } else if (operacion.equals("multiplicar")) {
-            return multiplicar();
+            return (double) this.multiplicar();
+        } else if (operacion.equals("dividir")) {
+            return this.dividir();
         } else {
             System.out.println("Operación '" + operacion + "' no soportada actualmente.");
-            return Integer.MIN_VALUE;
+            return null;
         }
     }
 
@@ -32,13 +34,27 @@ public class Calculadora {
         return this.numero1 * this.numero2;
     }
 
+    public Double dividir() {
+        if (this.numero2 == 0) {
+            System.out.println("Error: No se puede dividir por cero.");
+            return null;
+        }
+        return (double) this.numero1 / this.numero2;
+    }
+
     public static void main(String[] args) {
-        Calculadora calc = new Calculadora(4, 5);
-        int resultadoSuma = calc.realizarOperacion("suma");
+        Calculadora calc = new Calculadora(10, 2);
+        Double resultadoSuma = calc.realizarOperacion("suma");
         System.out.println("La suma es: " + resultadoSuma);
-        int resultadoResta = calc.realizarOperacion("resta");
+        Double resultadoResta = calc.realizarOperacion("resta");
         System.out.println("La resta es: " + resultadoResta);
-        int resultadoMultiplicar = calc.realizarOperacion("multiplicar");
+        Double resultadoMultiplicar = calc.realizarOperacion("multiplicar");
         System.out.println("La multiplicación es: " + resultadoMultiplicar);
+        Double resultadoDividir = calc.realizarOperacion("dividir");
+        System.out.println("La división es: " + resultadoDividir);
+
+        Calculadora calcError = new Calculadora(5, 0);
+        Double resultadoDivisionCero = calcError.realizarOperacion("dividir");
+        System.out.println("División por cero: " + resultadoDivisionCero);
     }
 }
