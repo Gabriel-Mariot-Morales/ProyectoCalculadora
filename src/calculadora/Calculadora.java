@@ -9,14 +9,6 @@ public class Calculadora {
 
     public Double realizarOperacion(String operacion) {
         if (operacion.equals("suma")) {
-<<<<<<< HEAD
-            return suma();
-        } else if (operacion.equals("resta")) {
-            return resta();
-        } else {
-            System.out.println("Operación '" + operacion + "' no soportada actualmente.");
-            return Integer.MIN_VALUE;
-=======
             return (double) this.suma();
         } else if (operacion.equals("resta")) {
             return (double) this.resta();
@@ -24,10 +16,11 @@ public class Calculadora {
             return (double) this.multiplicar();
         } else if (operacion.equals("dividir")) {
             return this.dividir();
+        } else if (operacion.equals("modulo")) {
+            return (double) this.modulo();
         } else {
             System.out.println("Operación '" + operacion + "' no soportada actualmente.");
             return null;
->>>>>>> dividir
         }
     }
 
@@ -39,14 +32,6 @@ public class Calculadora {
         return this.numero1 - this.numero2;
     }
 
-<<<<<<< HEAD
-    public static void main(String[] args) {
-        Calculadora calc = new Calculadora(10, 5);
-        int resultadoSuma = calc.realizarOperacion("suma");
-        System.out.println("La suma es: " + resultadoSuma);
-        int resultadoResta = calc.realizarOperacion("resta");
-        System.out.println("La resta es: " + resultadoResta);
-=======
     public int multiplicar() {
         return this.numero1 * this.numero2;
     }
@@ -58,7 +43,13 @@ public class Calculadora {
         }
         return (double) this.numero1 / this.numero2;
     }
-
+    public int modulo() {
+        if (this.numero2 == 0) {
+            System.out.println("Error: No se puede calcular el módulo con divisor cero.");
+            return 0;
+        }
+        return this.numero1 % this.numero2;
+    }
     public static void main(String[] args) {
         Calculadora calc = new Calculadora(10, 2);
         Double resultadoSuma = calc.realizarOperacion("suma");
@@ -73,6 +64,5 @@ public class Calculadora {
         Calculadora calcError = new Calculadora(5, 0);
         Double resultadoDivisionCero = calcError.realizarOperacion("dividir");
         System.out.println("División por cero: " + resultadoDivisionCero);
->>>>>>> dividir
     }
 }
