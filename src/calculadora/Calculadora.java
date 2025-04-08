@@ -10,9 +10,11 @@ public class Calculadora {
     public int realizarOperacion(String operacion) {
         if (operacion.equals("suma")) {
             return suma();
+        } else if (operacion.equals("resta")) {
+            return resta();
         } else {
             System.out.println("Operación '" + operacion + "' no soportada actualmente.");
-            return Integer.MIN_VALUE; // Usamos un valor especial para indicar error en este ejemplo simple
+            return Integer.MIN_VALUE;
         }
     }
 
@@ -20,9 +22,15 @@ public class Calculadora {
         return this.numero1 + this.numero2;
     }
 
+    public int resta() {
+        return this.numero1 - this.numero2;
+    }
+
     public static void main(String[] args) {
-        Calculadora calc = new Calculadora(5, 3);
+        Calculadora calc = new Calculadora(10, 5);
         int resultadoSuma = calc.realizarOperacion("suma");
         System.out.println("La suma es: " + resultadoSuma);
+        int resultadoResta = calc.realizarOperacion("resta");
+        System.out.println("La resta es: " + resultadoResta);
     }
 }
